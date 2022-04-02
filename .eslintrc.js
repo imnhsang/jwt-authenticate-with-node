@@ -14,6 +14,7 @@ module.exports = {
   rules: {
     semi         : ['error', 'never'],
     eqeqeq       : ['error', 'always'],
+    'no-console' : ['off'],
     'key-spacing': [
       2,
       {
