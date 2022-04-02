@@ -37,8 +37,5 @@
   },
   "_moduleAliases": {
     "@": "src"
-  },
-  "lint-staged": {
-    "src/**/*{.js,.jsx,.ts,.tsx}": "eslint"
   }
 }
