@@ -32,14 +32,13 @@
     "eslint": "^8.12.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.25.4",
-    "husky": "^7.0.0"
+    "husky": "^7.0.0",
+    "lint-staged": ">=10"
   },
   "_moduleAliases": {
     "@": "src"
   },
   "lint-staged": {
-    "*.{js,jsx}": [
-      "eslint"
-    ]
+    "*.{js,jsx}": "eslint"
   }
 }
