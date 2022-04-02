@@ -39,6 +39,6 @@
     "@": "src"
   },
   "lint-staged": {
-    "*.{js,jsx}": "eslint"
+    "*.{js,jsx}": "yarn lint"
   }
 }
