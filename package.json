@@ -4,7 +4,8 @@
   "main": "server.js",
   "scripts": {
     "start": "node babel-node src/server",
-    "dev": "nodemon --exec babel-node src/server"
+    "dev": "nodemon --exec babel-node src/server",
+    "eslint": "eslint src -c .eslintrc.js --ext js,jsx"
   },
   "repository": "https://github.com/imnhsang/jwt-authenticate-with-node.git",
   "author": "imleonguyensang",
