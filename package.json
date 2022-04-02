@@ -39,6 +39,6 @@
     "@": "src"
   },
   "lint-staged": {
-    "*.{js,jsx}": "eslint src"
+    "src/*.{js,jsx}": "eslint src"
   }
 }
