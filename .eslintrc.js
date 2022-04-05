@@ -1,27 +1,44 @@
 module.exports = {
-  parser: '@babel/eslint-parser',
-  env   : {
+  env: {
     browser: true,
     es2021 : true,
-    node   : true,
+    node   : true
   },
   extends: [
-    'airbnb-base',
+    'airbnb-base'
   ],
   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType : 'module',
+    ecmaVersion: 12,
+    sourceType : 'module'
+  },
+  plugins : ['import'],
+  settings: {
+    'import/resolver': {
+      alias: {
+        map: [
+          ['@', './src']]
+      },
+      extensions: ['.js', '.jsx']
+    }
   },
   rules: {
-    semi         : ['error', 'never'],
-    eqeqeq       : ['error', 'always'],
-    'no-console' : ['off'],
-    'key-spacing': [
+    'no-console'             : 'off',
+    indent                   : ['error', 2, { SwitchCase: 1 }],
+    semi                     : ['error', 'never'],
+    'no-multi-spaces'        : 'error',
+    eqeqeq                   : ['error', 'always'],
+    'no-trailing-spaces'     : 'error',
+    quotes                   : ['error', 'single'],
+    'eol-last'               : ['error', 'always'],
+    'comma-dangle'           : ['error', 'never'],
+    'no-cond-assign'         : ['error', 'always'],
+    'no-multiple-empty-lines': ['error', { max: 1, maxEOF: 1, maxBOF: 1 }],
+    'key-spacing'            : [
       2,
       {
         singleLine: { beforeColon: false, afterColon: true },
-        multiLine : { beforeColon: false, afterColon: true, align: 'colon' },
-      },
-    ],
-  },
+        multiLine : { beforeColon: false, afterColon: true, align: 'colon' }
+      }
+    ]
+  }
 }
