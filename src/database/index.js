@@ -7,7 +7,7 @@ const connectToMongo = async () => {
     // useCreateIndex    : true,
     useNewUrlParser   : true,
     // useFindAndModify  : false,
-    useUnifiedTopology: true,
+    useUnifiedTopology: true
   }
 
   mongoose.connection.on('connecting', () => {
