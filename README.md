@@ -1,1 +1,1 @@
-# jwt-authenticate-with-node
+# JWT Authentication with Redis
