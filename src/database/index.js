@@ -1,5 +1,8 @@
+import glob from 'glob'
 import config from 'config'
 import mongoose from 'mongoose'
+
+import helpers from '@/helpers'
 
 const connectToMongo = async () => {
   const uri = config.get('mongo.uri')
@@ -40,4 +43,8 @@ const connectToMongo = async () => {
   return mongoose.connect(uri, options)
 }
 
-export default { connectToMongo }
+const loadModels = () => glob
+  .sync(`${global.paths.database}/models/*/index.js`)
+  .forEach(helpers.resolveModule)
+
+export default { connectToMongo, loadModels }

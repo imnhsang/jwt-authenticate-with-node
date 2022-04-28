@@ -16,7 +16,11 @@ module.exports = {
     'import/resolver': {
       alias: {
         map: [
-          ['@', './src']]
+          ['@', './src'],
+          [
+            '@/routes,', './src/routes'
+          ]
+        ]
       },
       extensions: ['.js', '.jsx']
     }
@@ -39,6 +43,7 @@ module.exports = {
         singleLine: { beforeColon: false, afterColon: true },
         multiLine : { beforeColon: false, afterColon: true, align: 'colon' }
       }
-    ]
+    ],
+    'import/prefer-default-export': 'off'
   }
 }
