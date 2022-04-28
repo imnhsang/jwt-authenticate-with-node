@@ -6,9 +6,11 @@ import cache from './cache'
 import database from './database'
 
 const createServer = async (app) => {
+  database.loadModels()
+
   Promise.all([
-    database.connectToMongo(),
-    cache.connectToRedis()
+    cache.connectToRedis(),
+    database.connectToMongo()
   ])
 
   const port = process.env.PORT || 5000
