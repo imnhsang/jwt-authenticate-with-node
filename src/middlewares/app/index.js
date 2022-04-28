@@ -6,7 +6,7 @@ const load = (app) => {
   app.use((req, res, next) => {
     // Website you wish to allow to connect
     const allowedOrigins = [
-      'http://localhost:3000',
+      'http://localhost:3000'
     ]
 
     const { origin } = req.headers
@@ -17,13 +17,13 @@ const load = (app) => {
     // Request methods you wish to allow
     res.setHeader(
       'Access-Control-Allow-Methods',
-      'GET, POST, OPTIONS, PUT, PATCH, DELETE',
+      'GET, POST, OPTIONS, PUT, PATCH, DELETE'
     )
 
     // Request headers you wish to allow
     res.setHeader(
       'Access-Control-Allow-Headers',
-      'Origin, X-Requested-With, Content-Type, Accept, Authorization',
+      'Origin, X-Requested-With, Content-Type, Accept, Authorization'
     )
 
     // Set to true if you need the website to include cookies in the requests sent
@@ -35,7 +35,7 @@ const load = (app) => {
   })
 
   app.use(helmet({
-    contentSecurityPolicy: false,
+    contentSecurityPolicy: false
   }))
 
   app.use(express.json({ extended: false }))
