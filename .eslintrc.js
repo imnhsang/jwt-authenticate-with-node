@@ -44,6 +44,7 @@ module.exports = {
         multiLine : { beforeColon: false, afterColon: true, align: 'colon' }
       }
     ],
-    'import/prefer-default-export': 'off'
+    'import/prefer-default-export'   : 'off',
+    'import/no-import-module-exports': 'off'
   }
 }

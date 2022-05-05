@@ -2,6 +2,8 @@ import helmet from 'helmet'
 import express from 'express'
 import cookieParser from 'cookie-parser'
 
+import authentication from './authentication'
+
 const load = (app) => {
   app.use((req, res, next) => {
     // Website you wish to allow to connect
@@ -38,9 +40,13 @@ const load = (app) => {
     contentSecurityPolicy: false
   }))
 
-  app.use(express.json({ extended: false }))
+  app.use(express.json())
+
+  app.use(express.urlencoded({ extended: true }))
 
   app.use(cookieParser())
+
+  app.use(authentication)
 }
 
 export default load

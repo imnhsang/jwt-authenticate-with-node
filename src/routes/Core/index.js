@@ -1,18 +1,21 @@
 
-import { METHODS } from '@/constants'
+import { METHODS } from '@/utils/constants'
 
 import * as controller from './controller'
+import * as validation from './validation'
 
 export default [{
   method: METHODS.POST,
   path  : '/signup',
 
-  controller: controller.signUp
+  controller: controller.signUp,
+  validation: validation.signUp
 }, {
   method: METHODS.POST,
   path  : '/login',
 
-  controller: controller.logIn
+  controller: controller.logIn,
+  validation: validation.logIn
 },
 {
   method: METHODS.POST,

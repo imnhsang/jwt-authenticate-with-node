@@ -1,12 +1,12 @@
 import glob from 'glob'
 
-import helpers from '@/helpers'
+import { resolveModule } from '@/utils/helpers'
 
 export const getRoutes = () => {
   const routes = glob
     .sync(`${__dirname}/*/index.js`)
     // eslint-disable-next-line no-shadow
-    .reduce((routes, path) => [...routes, ...helpers.resolveModule(path)], [])
+    .reduce((routes, path) => [...routes, ...resolveModule(path)], [])
   return routes
 }
 
