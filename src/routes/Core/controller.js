@@ -62,6 +62,8 @@ export const logIn = async (req, res, next) => {
 
 export const logOut = async (req, res, next) => {
   try {
+    res.clearCookie('access_token')
+
     return res.json({
       code   : 200,
       type   : 'OK',

@@ -5,7 +5,7 @@ import APIError from '@/utils/api-error'
 import { HTTP_STATUS_CODES } from '@/utils/constants'
 
 const generateCredential = async (uid) => {
-  const jwtToken = jwt.sign({ uid }, config.get('jwt.secret'), { expiresIn: config.get('token.authentication.lifetime') })
+  const jwtToken = jwt.sign({ uid }, config.get('jwt.secret'), { expiresIn: config.get('token.verification.lifetime') })
   const [header, payload, signature] = jwtToken.split('.')
 
   return {

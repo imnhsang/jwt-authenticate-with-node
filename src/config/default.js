@@ -14,7 +14,7 @@ const config = {
     secret: 'hVKMNLXmnE8FFrukPZhTD6U7'
   },
   token: {
-    authentication: {
+    verification: {
       lifetime: 30 * ONE_DAY
     }
   }
