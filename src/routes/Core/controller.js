@@ -1,17 +1,17 @@
-import bcrypt from 'bcrypt'
-
 import { User } from '@/database/models'
+
+import AuthService from '@/services/auth'
 
 import APIError from '@/utils/api-error'
 
-import { HTTP_STATUS_CODES } from '@/constants'
+import { HTTP_STATUS_CODES } from '@/utils/constants'
 
 export const signUp = async (req, res, next) => {
   try {
-    const { ...info } = req.body
+    const { ...infos } = req.body
 
     const conditions = {
-      email: info?.email
+      email: infos?.email
     }
 
     const isExist = !!await User.findOne(conditions)
@@ -19,15 +19,9 @@ export const signUp = async (req, res, next) => {
       throw new APIError('The email is exist.', HTTP_STATUS_CODES.CONFLICT)
     }
 
-    const salt = await bcrypt.genSalt(10)
-    const hashedPassword = await bcrypt.hash(info?.password, salt)
+    const user = new User(infos)
 
-    const user = new User({
-      ...info,
-      password: hashedPassword
-    })
-
-    user.save()
+    await user.save()
 
     return res.json({
       code   : 200,
@@ -42,11 +36,25 @@ export const signUp = async (req, res, next) => {
 export const logIn = async (req, res, next) => {
   try {
     const { email, password } = req.body
-    console.log('🚀 ~ file: controller.js ~ line 4 ~ login ~ email, password', email, password)
 
-    const jwtToken = 'jwtToken'
+    const conditions = {
+      email
+    }
 
-    return res.json(jwtToken)
+    const user = await User.findOne(conditions)
+    if (!user) {
+      throw new APIError('The user is not exist.', HTTP_STATUS_CODES.BAD_REQUEST)
+    }
+
+    if (!user?.isValidPassword(password)) {
+      throw new APIError('The password is not valid.', HTTP_STATUS_CODES.BAD_REQUEST)
+    }
+
+    const { header, payload, signature } = await AuthService.generateCredential(user?.id)
+
+    await res.cookie('access_token', signature, { httpOnly: true })
+
+    return res.json(`${header}.${payload}`)
   } catch (error) {
     return next(error)
   }
@@ -54,6 +62,8 @@ export const logIn = async (req, res, next) => {
 
 export const logOut = async (req, res, next) => {
   try {
+    res.clearCookie('access_token')
+
     return res.json({
       code   : 200,
       type   : 'OK',

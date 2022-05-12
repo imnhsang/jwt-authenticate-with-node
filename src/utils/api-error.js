@@ -1,4 +1,4 @@
-import { HTTP_STATUS_CODE_DEFINITIONS, HTTP_STATUS_CODES } from '@/constants'
+import { HTTP_STATUS_CODE_DEFINITIONS, HTTP_STATUS_CODES } from '@/utils/constants'
 
 class APIError extends Error {
   constructor(message, code, details, stack) {
@@ -14,7 +14,6 @@ class APIError extends Error {
     this.stack = stack
   }
 
-  /** Converts apiError to a plain object */
   toObject() {
     const fields = ['type', 'code', 'message', 'details', 'stack']
 

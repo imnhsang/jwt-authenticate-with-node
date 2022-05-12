@@ -22,11 +22,11 @@
     "express": "^4.17.3",
     "glob": "^7.2.0",
     "helmet": "^5.0.2",
+    "joi": "^17.6.0",
     "jsonwebtoken": "^8.5.1",
     "module-alias": "^2.2.2",
     "mongoose": "^6.2.9",
-    "nodemon": "^2.0.15",
-    "redis": "^4.0.6"
+    "nodemon": "^2.0.15"
   },
   "devDependencies": {
     "@babel/node": "^7.16.8",
