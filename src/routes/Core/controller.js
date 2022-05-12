@@ -52,7 +52,7 @@ export const logIn = async (req, res, next) => {
 
     const { header, payload, signature } = await AuthService.generateCredential(user?.id)
 
-    await res.cookie('access_token', signature, { httpOnly: true })
+    await res.cookie('access_token', signature, { httpOnly: true, secure: true })
 
     return res.json(`${header}.${payload}`)
   } catch (error) {
