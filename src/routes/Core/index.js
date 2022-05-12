@@ -21,5 +21,6 @@ export default [{
   method: METHODS.POST,
   path  : '/logout',
 
-  controller: controller.logOut
+  controller: controller.logOut,
+  authOpts  : { mode: 'required' }
 }]

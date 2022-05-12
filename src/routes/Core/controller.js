@@ -47,12 +47,12 @@ export const logIn = async (req, res, next) => {
     }
 
     if (!user?.isValidPassword(password)) {
-      throw new APIError('The password is not valid.')
+      throw new APIError('The password is not valid.', HTTP_STATUS_CODES.BAD_REQUEST)
     }
 
     const { header, payload, signature } = await AuthService.generateCredential(user?.id)
 
-    res.cookie('access_token', signature, { httpOnly: true })
+    await res.cookie('access_token', signature, { httpOnly: true })
 
     return res.json(`${header}.${payload}`)
   } catch (error) {

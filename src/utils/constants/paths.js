@@ -9,7 +9,6 @@ const paths = {
   src   : path.join(root, 'src'),
   config: path.join(root, 'config'),
 
-  cache      : path.join(root, 'src/cache'),
   utils      : path.join(root, 'src/utils'),
   routes     : path.join(root, 'src/routes'),
   database   : path.join(root, 'src/database'),
