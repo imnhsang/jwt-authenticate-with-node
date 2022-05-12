@@ -1,6 +1,6 @@
 import APIError from '@/utils/api-error'
 
-import { HTTP_STATUS_CODES } from '@/constants'
+import { HTTP_STATUS_CODES } from '@/utils/constants'
 
 // eslint-disable-next-line no-unused-vars
 const handler = (error, req, res, next) => res.status(error.code).json(error.toObject())
